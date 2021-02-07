@@ -2,17 +2,19 @@ package unbreakable.shop.auto.entity;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="Images_TBL")
+@Entity(name = "Image")
+@Table(schema = "dbo",name="images_TBL")
 public class Image {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
-
+    @Column(name = "image_name", nullable = true, length = 255)
     private String imageName;
+    @Column(name = "image_type", nullable = true, length = 10)
     private String imageType;
 
+    @Column(name = "image_path", nullable = false, length = 50)
     private String imagePath;
 
     public Image() {
