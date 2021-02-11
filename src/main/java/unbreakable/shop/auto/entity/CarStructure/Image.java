@@ -1,9 +1,9 @@
-package unbreakable.shop.auto.entity;
+package unbreakable.shop.auto.entity.CarStructure;
 
 import javax.persistence.*;
 
 @Entity(name = "Image")
-@Table(schema = "dbo",name="images_TBL")
+@Table(schema = "dbo",name="images_tbl")
 public class Image {
 
     @Id
@@ -14,17 +14,33 @@ public class Image {
     @Column(name = "image_type", nullable = true, length = 10)
     private String imageType;
 
-    @Column(name = "image_path", nullable = false, length = 50)
-    private String imagePath;
+    @Lob
+    @Column(name = "image", nullable = false)
+    private byte[] image;
 
-    public Image() {
+    @ManyToOne
+    @JoinColumn(name="car_id")
+    private Car car;
+
+
+    public Image(String imageName, String contentType, byte[] bytes) {
     }
 
-    public Image(String imageName, String imageType, String dataPath) {
+    public Image(Integer id, String imageName, String imageType, byte[] image, Car car) {
+        this.id = id;
         this.imageName = imageName;
         this.imageType = imageType;
-        this.imagePath = dataPath;
+        this.image = image;
+        this.car = car;
     }
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
 
     public Integer getId() {
         return id;
@@ -50,12 +66,12 @@ public class Image {
         this.imageType = imageType;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setImage(byte[] imagePath) {
+        this.image = imagePath;
     }
 }
 

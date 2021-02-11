@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Car Model</title>
+</head>
+<body>
+
+<h3>Add Car Model</h3>
+<div>
+    <form id="/admin/carModel/add" name="/admin/carModel/add" method="post"
+          th:action=@{/admin/carModel/add}>
+        <h4>Type Model you want to add</h4>
+        <input type="text" name="carModelName"/>
+        <h4>Type Manufacturer</h4>
+        <input type="text" name="name"/>
+        <button type="submit">Add</button>
+    </form>
+    <h3>Delete Car Model</h3>
+    <form id="/admin/carModel/delete" name="/admin/carModel/delete" method="post"
+          th:action=@{/admin/carModel/delete}>
+        <h4>Type Model you want to delete</h4>
+        <input type="text" name="name"/>
+        <button type="submit">Delete</button>
+
+    </form>
+    <h3>Update Car Model</h3>
+    <form id="/admin/carModel/update" name="/admin/carModel/update" method="post"
+          th:action=@{/admin/carModel/update}>
+        <h4>Type Model you want be updated</h4>
+        <input type="text" name="name"/>
+        <h4>Type Model you want</h4>
+        <input type="text" name="newName"/>
+        <button type="submit">Update</button>
+
+    </form>
+</div>
+<div>
+    <h3>List of CarModels</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Manufacturer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="carModel:${CarModels}">
+            <td th:text="${carModel.id}"/>
+            <td th:text="${carModel.carModelName}"/>
+            <td th:text="${carModel.getManufacturer().getManufacturerName()}"/>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <h3>List of Manufacturers</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="manufacturer:${Manufacturers}">
+            <td th:text="${manufacturer.id}"/>
+            <td th:text="${manufacturer.manufacturerName}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

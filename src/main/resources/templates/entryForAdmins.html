@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose</title>
+</head>
+<body>
+<div>
+    <h3>Choose what to add</h3>
+    <div>
+    <a th:href="@{'/admin/manufacturer'}">Edit Manufacturers</a>
+    </div>
+    <div>
+    <a th:href="@{'/admin/carModel'}">Edit Car Model</a>
+    </div>
+    <div>
+        <a th:href="@{'/admin/bodyType'}">Edit Body Type</a>
+    </div>
+    <div>
+        <a th:href="@{'/admin/car'}">Add Car</a>
+    </div>
+</div>
+</body>
+</html>

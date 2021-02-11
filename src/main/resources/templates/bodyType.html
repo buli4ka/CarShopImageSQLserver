@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Body Type</title>
+</head>
+<body>
+<div>
+    <h3>Upload Body Type</h3>
+    <form id ="/admin/bodyType/add" name="/admin/bodyType/add" method="post"
+          th:action=@{/admin/bodyType/add}>
+        <h6>Enter Body Type</h6>
+        <div><input type="text" name="name"/>
+            <button type="submit">Submit</button>
+        </div>
+
+
+    </form>
+    <h3>Delete Body Type</h3>
+    <form id ="/admin/bodyType/delete" name="/admin/bodyType/delete" method="post"
+          th:action=@{/admin/bodyType/delete}>
+        <input type="text" name="name"/>
+        <button type="submit">Submit</button>
+    </form>
+    <h3>Update Body Type</h3>
+    <form id ="/admin/bodyType/update" name="/admin/bodyType/update" method="post"
+          th:action=@{/admin/bodyType/update}>
+        <input type="text" name="name"/><input type="text" name="newName"/>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<div>
+    <h3>List of Manufacturers</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bodyType:${BodyTypes}">
+            <td th:text="${bodyType.id}"/>
+            <td th:text="${bodyType.bodyTypeName}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+</body>
+</html>
