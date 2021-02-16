@@ -1,11 +1,11 @@
-package unbreakable.shop.auto.entity.CarStructure;
+package unbreakable.shop.auto.entity.car_structure;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "BodyType")
-@Table(schema = "dbo", name = "body_type_tbl")
+@Table(schema = "carshop", name = "body_type_tbl")
 public class BodyType {
 
     @Id

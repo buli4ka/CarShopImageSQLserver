@@ -3,16 +3,16 @@ package unbreakable.shop.auto.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import unbreakable.shop.auto.entity.CarStructure.BodyType;
-import unbreakable.shop.auto.entity.CarStructure.Car;
-import unbreakable.shop.auto.entity.CarStructure.CarModel;
-import unbreakable.shop.auto.entity.CarStructure.Manufacturer;
+import unbreakable.shop.auto.entity.car_structure.BodyType;
+import unbreakable.shop.auto.entity.car_structure.Car;
+import unbreakable.shop.auto.entity.car_structure.CarModel;
+import unbreakable.shop.auto.entity.car_structure.Manufacturer;
 import unbreakable.shop.auto.repository.CarRepository;
 
 import java.util.List;
 
 @Service
-public class CreatingCarService {
+public class CarService {
     @Autowired
     private CarRepository carRepository;
 

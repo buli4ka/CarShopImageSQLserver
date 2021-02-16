@@ -1,4 +1,4 @@
-package unbreakable.shop.auto.controller;
+package unbreakable.shop.auto.controller.creating_controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import unbreakable.shop.auto.entity.CarStructure.CarModel;
-import unbreakable.shop.auto.entity.CarStructure.Manufacturer;
+import unbreakable.shop.auto.entity.car_structure.CarModel;
+import unbreakable.shop.auto.entity.car_structure.Manufacturer;
 import unbreakable.shop.auto.service.CarModelService;
 import unbreakable.shop.auto.service.ManufacturerService;
 
@@ -32,15 +32,8 @@ public class CarModelController {
     @PostMapping("/admin/carModel/add")
     public String addCarModel(@RequestParam("carModelName") String carModelName
             , @RequestParam("name") String manufacturerName ){
-        if(manufacturerService.getManufacturer(manufacturerName) != null)
-            carModelService.saveCarModel(carModelName
-                , manufacturerService.getManufacturer(manufacturerName));
-        else{
-            manufacturerService.saveManufacturer(manufacturerName);
-            carModelService.saveCarModel(carModelName
-                    , manufacturerService.getManufacturer(manufacturerName));
-        }
-
+        carModelService.saveCarModel(carModelName
+                ,manufacturerService.notExistCreate(manufacturerName));
         return "redirect:/admin/carModel";
     }
 

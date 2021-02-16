@@ -8,7 +8,7 @@
 <h3>Add Car Model</h3>
 
 <form id="/admin/car/add" name="/admin/car/add" method="post"
-      th:action=@{/admin/car/add}>
+      th:action=@{/admin/car/add} enctype="multipart/form-data">
     <h4>Type Manufacturer</h4>
     <input type="text" name="manufacturer"/>
     <h4>Type Car Model</h4>
@@ -21,8 +21,31 @@
     <input type="text" name="carDescription"/>
     <h4>Type Car Price</h4>
     <input type="text" name="price"/>
+    <h4>Add Images </h4>
+    <input type="file" name="images" multiple required />
     <button type="submit">Add</button>
+
 </form>
+
+
+<!--<div>-->
+<!--    <label>Choose manufacturer</label>-->
+<!--    <div>-->
+<!--        <select th:field="*{Manufacturers}">-->
+<!--<th:block th:each="man:${Manufacturers}">-->
+<!--    <option th:text="${man.manufacturerName}"></option>-->
+<!--</th:block>-->
+<!--        </select>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--<h3>Upload Multiple Files</h3>-->
+<!--<form id="uploadImages" name="uploadImages" method="post"-->
+<!--      th:action=@{/admin/add/image} enctype="multipart/form-data">-->
+<!--    <input type="file" name="images" multiple required />-->
+<!--    <button type="submit">Submit</button>-->
+<!--</form>-->
 
 <div>
     <h3>List of Cars</h3>

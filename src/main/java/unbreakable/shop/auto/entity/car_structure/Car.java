@@ -1,4 +1,4 @@
-package unbreakable.shop.auto.entity.CarStructure;
+package unbreakable.shop.auto.entity.car_structure;
 
 
 import javax.persistence.*;
@@ -6,8 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "Car")
-@Table(schema = "dbo",name="car_tbl")
-
+@Table(schema = "carshop",name="car_tbl")
 public class Car {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

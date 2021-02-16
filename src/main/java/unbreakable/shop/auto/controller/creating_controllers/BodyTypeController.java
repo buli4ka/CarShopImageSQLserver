@@ -1,4 +1,4 @@
-package unbreakable.shop.auto.controller;
+package unbreakable.shop.auto.controller.creating_controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import unbreakable.shop.auto.entity.CarStructure.BodyType;
+import unbreakable.shop.auto.entity.car_structure.BodyType;
 import unbreakable.shop.auto.service.BodyTypeService;
 
 import java.util.List;

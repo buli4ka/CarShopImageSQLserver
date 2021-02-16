@@ -2,8 +2,8 @@ package unbreakable.shop.auto.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import unbreakable.shop.auto.entity.CarStructure.CarModel;
-import unbreakable.shop.auto.entity.CarStructure.Manufacturer;
+import unbreakable.shop.auto.entity.car_structure.CarModel;
+import unbreakable.shop.auto.entity.car_structure.Manufacturer;
 import unbreakable.shop.auto.repository.CarModelRepository;
 
 import java.util.List;
@@ -28,6 +28,20 @@ public class CarModelService {
             CarModel carModel = carModelRepository.findFirstByCarModelName(carModelName);
             if(carModel != null)
                 return carModel;
+        } catch (Exception e){e.printStackTrace();}
+        return null;
+    }
+    public CarModel notExistCreate(String carModelName, Manufacturer carManufacturer){
+        try {
+            CarModel carModel = carModelRepository.findFirstByCarModelName(carModelName);
+            if(carModel != null)
+                return carModel;
+            else {
+                carModel = new CarModel();
+                carModel.setCarModelName(carModelName);
+                carModel.setManufacturer(carManufacturer);
+                return carModelRepository.save(carModel);
+            }
         } catch (Exception e){e.printStackTrace();}
         return null;
     }

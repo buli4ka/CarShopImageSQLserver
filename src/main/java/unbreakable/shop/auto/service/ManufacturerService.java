@@ -2,7 +2,7 @@ package unbreakable.shop.auto.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import unbreakable.shop.auto.entity.CarStructure.Manufacturer;
+import unbreakable.shop.auto.entity.car_structure.Manufacturer;
 import unbreakable.shop.auto.repository.CarModelRepository;
 import unbreakable.shop.auto.repository.ManufacturerRepository;
 
@@ -28,10 +28,25 @@ public class ManufacturerService {
     }
     public Manufacturer getManufacturer(String manufacturerName){
         try {
-            Manufacturer manufacturer = manufacturerRepository.findByManufacturerName(manufacturerName);
+            Manufacturer manufacturer = manufacturerRepository.findFirstByManufacturerName(manufacturerName);
             if(manufacturer != null)
                 return manufacturer;
         } catch (Exception e){e.printStackTrace();}
+        return null;
+    }
+    public Manufacturer notExistCreate(String manufacturerName){
+        try{
+            Manufacturer manufacturer = manufacturerRepository.findFirstByManufacturerName(manufacturerName);
+            if(manufacturer != null)
+                return manufacturer;
+            else{
+                manufacturer = new Manufacturer();
+                manufacturer.setManufacturerName(manufacturerName);
+                return manufacturerRepository.save(manufacturer);
+            }
+
+        }
+        catch (Exception e){e.printStackTrace();}
         return null;
     }
     public List<Manufacturer> getManufacturers(){

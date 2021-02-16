@@ -1,4 +1,4 @@
-package unbreakable.shop.auto.controller;
+package unbreakable.shop.auto.controller.creating_controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

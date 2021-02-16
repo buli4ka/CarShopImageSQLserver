@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Window</title>
+</head>
+<body>
+
+
+<div>
+    <h3>List of CarModels</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Car</th>
+            <th>Image</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car:${Cars}">
+            <td th:text="${car.id}"/>
+            <td th:each="image:${Images}" th:if="${car.id == image.getCar().getId()}" th:src="image."/>
+
+
+
+
+
+
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

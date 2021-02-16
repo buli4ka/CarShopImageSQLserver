@@ -1,12 +1,8 @@
 package unbreakable.shop.auto.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import unbreakable.shop.auto.entity.CarStructure.Car;
-import unbreakable.shop.auto.entity.CarStructure.CarModel;
-import unbreakable.shop.auto.entity.CarStructure.Manufacturer;
-
-import java.util.List;
-import java.util.Set;
+import unbreakable.shop.auto.entity.car_structure.CarModel;
+import unbreakable.shop.auto.entity.car_structure.Manufacturer;
 
 
 public interface CarModelRepository extends JpaRepository<CarModel,Integer> {

@@ -1,9 +1,9 @@
-package unbreakable.shop.auto.entity.CarStructure;
+package unbreakable.shop.auto.entity.car_structure;
 
 import javax.persistence.*;
 
 @Entity(name = "Image")
-@Table(schema = "dbo",name="images_tbl")
+@Table(schema = "carshop",name="images_tbl")
 public class Image {
 
     @Id
@@ -23,7 +23,7 @@ public class Image {
     private Car car;
 
 
-    public Image(String imageName, String contentType, byte[] bytes) {
+    public Image() {
     }
 
     public Image(Integer id, String imageName, String imageType, byte[] image, Car car) {
