@@ -42,11 +42,12 @@
 --)
 
 
---CREATE TABLE [dbo].[imaAges_tbl](
+--CREATE TABLE [dbo].[images_tbl](
 --	[id] int IDENTITY(1,1) NOT NULL primary key,
 --	[image_name] varchar (255),
 --	[image_type] varchar (10),
 --	[image] image NOT NULL,
+--  image_path varchar(100),
 --	car_id int,
 --	FOREIGN KEY(car_id) REFERENCES car_tbl ([id]),	
 --)

@@ -13,6 +13,12 @@ import unbreakable.shop.auto.entity.car_structure.Image;
 import unbreakable.shop.auto.entity.car_structure.Manufacturer;
 import unbreakable.shop.auto.service.*;
 
+import javax.sql.rowset.serial.SerialBlob;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -53,7 +59,7 @@ public class CarCreatingController {
             , @RequestParam("carDescription") String carDescription
             , @RequestParam("price") double price
             , @RequestParam("images") MultipartFile[] images
-    ) {
+    ) throws IOException, SQLException {
         Car car = carService.saveCar(price
                 , manufacturerService.notExistCreate(manufacturerName)
                 , bodyTypeService.notExistCreate(bodyTypeName)
@@ -61,6 +67,7 @@ public class CarCreatingController {
                 , carModelService.notExistCreate(carModelName, manufacturerService.notExistCreate(manufacturerName))
                 , carDescription);
         for(MultipartFile image : images){
+
             imageService.saveImage(image, car);
         }
 

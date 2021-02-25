@@ -14,6 +14,9 @@ public class Image {
     @Column(name = "image_type", nullable = true, length = 10)
     private String imageType;
 
+    @Column(name = "image_path", nullable = true, length = 100)
+    private String imagePath;
+
     @Lob
     @Column(name = "image", nullable = false)
     private byte[] image;
@@ -72,6 +75,14 @@ public class Image {
 
     public void setImage(byte[] imagePath) {
         this.image = imagePath;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }
 
