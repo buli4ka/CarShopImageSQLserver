@@ -1,6 +1,7 @@
 package unbreakable.shop.auto.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import unbreakable.shop.auto.entity.car_structure.Car;
@@ -21,6 +22,9 @@ public class ImageService {
     @Autowired
     private ImageRepository imageRepository;
 
+    @Value("${image.path}")
+    private String path;
+
     private static String generateString() {
         String uuid = UUID.randomUUID().toString();
         uuid = uuid.replace("-","");
@@ -28,11 +32,12 @@ public class ImageService {
     }
 
     private String fileRecordPath(byte[] fileBytes, String fileName){
-        ClassLoader classLoader = getClass().getClassLoader();
-        String path = classLoader.getResource("./static/").getFile();
-        System.out.println(path);
-        path = path.substring(1);
-        System.out.println(path);
+
+//        ClassLoader classLoader = getClass().getClassLoader();
+//        String path = classLoader.getResource("./static/").getFile();
+//        System.out.println(path);
+//        path = path.substring(1);
+//        System.out.println(path);
 
         try {
             path+=fileName;
@@ -43,7 +48,8 @@ public class ImageService {
             fos.close();}
         }
         catch (Exception e){e.printStackTrace();}
-        path = "/static/" + fileName;
+        //path = "/static/" + fileName;
+
         return path;
     }
 
@@ -82,6 +88,10 @@ public class ImageService {
     public List<Image> getImages(){return imageRepository.findAll();}
 
     public String getImgData(byte[] byteData) { return Base64.getMimeEncoder().encodeToString(byteData); }
+
+    public List<Image> getImagesByCarId(Integer id){
+        return imageRepository.findAllByCar_Id(id);
+    }
 
 
 }

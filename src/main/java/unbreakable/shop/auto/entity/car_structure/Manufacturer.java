@@ -11,7 +11,7 @@ public class Manufacturer {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "manufacturer_name", nullable = false, length = 30)
+    @Column(name = "manufacturer_name", nullable = false, length = 50)
     private String manufacturerName;
     @OneToMany
     @JoinColumn(name = "manufacturer_id")

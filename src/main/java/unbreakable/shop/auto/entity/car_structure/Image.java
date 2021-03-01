@@ -14,7 +14,7 @@ public class Image {
     @Column(name = "image_type", nullable = true, length = 10)
     private String imageType;
 
-    @Column(name = "image_path", nullable = true, length = 100)
+    @Column(name = "image_path", nullable = true, length = 255)
     private String imagePath;
 
     @Lob

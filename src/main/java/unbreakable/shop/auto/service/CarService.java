@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import unbreakable.shop.auto.entity.car_structure.*;
 import unbreakable.shop.auto.repository.CarRepository;
-import unbreakable.shop.auto.repository.ImageRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarService {
@@ -49,6 +49,13 @@ public class CarService {
 //            car.setImages(imageRepository.findFirstByCar_Id(car.getId()));
 //        }
 //    }
+    public void deleteCarById(Integer id){
+        try {
+            carRepository.deleteById(id);
+        }
+        catch (Exception e){e.printStackTrace();}
+    }
+    public Optional<Car> getCar(Integer id){return carRepository.findById(id);}
 
 
 }

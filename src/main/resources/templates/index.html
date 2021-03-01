@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Window</title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 </head>
 <body>
 
 
 <div>
     <h3>List of Cars</h3>
-    <table>
+    <table class="table table-hover table-dark">
         <thead>
         <tr>
             <th>Id</th>
@@ -22,8 +24,8 @@
             <th>Image</th>
         </tr>
         </thead>
-        <tbody th:each="image:${Images}">
-        <tr th:each="car:${Cars}" >
+        <tbody>
+        <tr th:each="car:${Cars}">
             <td th:text="${car.id}"/>
             <td th:text="${car.getManufacturer().getManufacturerName()}"/>
             <td th:text="${car.getCarModel().getCarModelName()}"/>
@@ -31,10 +33,15 @@
             <td th:text="${car.yearOfIssue}"/>
             <td th:text="${car.carDescription}"/>
             <td th:text="${car.price}"/>
-            <td th:if="${car.id == image.car.id}"><img th:src="${image.imagePath}" height="250"   /></td>
+            <td th:each="image:${Images}"
+                th:if="${car.id == image.getCar().id}">
+                <a th:href=" '/'+${car.id}"><img th:src="${image.imagePath}" height="150"/>
+                </a>
+            </td>
 
 
         </tr>
+
         </tbody>
     </table>
 </div>

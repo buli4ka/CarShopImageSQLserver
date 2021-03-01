@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +13,7 @@ import unbreakable.shop.auto.entity.car_structure.Car;
 import unbreakable.shop.auto.entity.car_structure.Image;
 import unbreakable.shop.auto.entity.car_structure.Manufacturer;
 import unbreakable.shop.auto.service.*;
+
 
 import javax.sql.rowset.serial.SerialBlob;
 import java.io.File;
@@ -34,21 +36,24 @@ public class CarCreatingController {
     @Autowired
     private ImageService imageService;
 
+
     @GetMapping("/admin/car")
     public String getAll(Model model) {
-        List<Car> cars = carService.getCars();
 
-        List<Manufacturer> manufacturers = manufacturerService.getManufacturers();
+            List<Car> cars = carService.getCars();
 
-
-        List<Image> images = imageService.getImages();
-
-        model.addAttribute("Cars", cars);
-        model.addAttribute("Images", images);
-        model.addAttribute("Manufacturers", manufacturers);
+            List<Manufacturer> manufacturers = manufacturerService.getManufacturers();
 
 
-        return "car";
+            List<Image> images = imageService.getImages();
+
+            model.addAttribute("Cars", cars);
+            model.addAttribute("Images", images);
+            model.addAttribute("Manufacturers", manufacturers);
+
+
+            return "car";
+
     }
 
     @PostMapping("/admin/car/add")
@@ -59,18 +64,23 @@ public class CarCreatingController {
             , @RequestParam("carDescription") String carDescription
             , @RequestParam("price") double price
             , @RequestParam("images") MultipartFile[] images
-    ) throws IOException, SQLException {
+    )  {
         Car car = carService.saveCar(price
                 , manufacturerService.notExistCreate(manufacturerName)
                 , bodyTypeService.notExistCreate(bodyTypeName)
                 , yearOfIssue
                 , carModelService.notExistCreate(carModelName, manufacturerService.notExistCreate(manufacturerName))
                 , carDescription);
-        for(MultipartFile image : images){
+        for (MultipartFile image : images) {
 
             imageService.saveImage(image, car);
         }
 
+        return "redirect:/admin/car";
+    }
+    @PostMapping("/admin/car/delete")
+    public String deleteCar(@RequestParam("id") Integer id){
+        carService.deleteCarById(id);
         return "redirect:/admin/car";
     }
 
