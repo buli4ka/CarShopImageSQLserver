@@ -1,4 +1,4 @@
-package unbreakable.shop.auto.service;
+package unbreakable.shop.auto.service.car_service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import unbreakable.shop.auto.entity.car_structure.Car;
 import unbreakable.shop.auto.entity.car_structure.Image;
-import unbreakable.shop.auto.repository.ImageRepository;
+import unbreakable.shop.auto.repository.car.ImageRepository;
 
 
 import java.io.File;
@@ -33,11 +33,11 @@ public class ImageService {
 
     private String fileRecordPath(byte[] fileBytes, String fileName){
 
-//        ClassLoader classLoader = getClass().getClassLoader();
-//        String path = classLoader.getResource("./static/").getFile();
-//        System.out.println(path);
-//        path = path.substring(1);
-//        System.out.println(path);
+        ClassLoader classLoader = getClass().getClassLoader();
+        String path = classLoader.getResource("./static/").getFile();
+        System.out.println(path);
+        path = path.substring(1);
+        System.out.println(path);
 
         try {
             path+=fileName;
@@ -48,7 +48,7 @@ public class ImageService {
             fos.close();}
         }
         catch (Exception e){e.printStackTrace();}
-        //path = "/static/" + fileName;
+        path = "static/" + fileName;
 
         return path;
     }

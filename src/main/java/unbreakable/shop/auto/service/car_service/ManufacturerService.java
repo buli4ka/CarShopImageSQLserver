@@ -1,10 +1,10 @@
-package unbreakable.shop.auto.service;
+package unbreakable.shop.auto.service.car_service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import unbreakable.shop.auto.entity.car_structure.Manufacturer;
-import unbreakable.shop.auto.repository.CarModelRepository;
-import unbreakable.shop.auto.repository.ManufacturerRepository;
+import unbreakable.shop.auto.repository.car.CarModelRepository;
+import unbreakable.shop.auto.repository.car.ManufacturerRepository;
 
 import java.util.List;
 

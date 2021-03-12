@@ -7,11 +7,11 @@ USE CarShop;
 CREATE TABLE body_type_tbl (
 	id int auto_increment NOT NULL primary key,
 	body_type_name nvarchar(20) NOT NULL
-)
+);
 CREATE TABLE manufacturer_tbl(
 	id int auto_increment NOT NULL primary key,
 	manufacturer_name nvarchar(30) NOT NULL
-)
+);
 
 
 CREATE TABLE car_model_tbl(
@@ -19,7 +19,7 @@ CREATE TABLE car_model_tbl(
 	car_model_name nvarchar(30) NOT NULL,
 	manufacturer_id int NULL,
 	FOREIGN KEY(manufacturer_id) REFERENCES manufacturer_tbl (id) 
-)
+);
 
 CREATE TABLE car_tbl(
 	id int auto_increment NOT NULL primary key,	
@@ -38,7 +38,7 @@ CREATE TABLE car_tbl(
 
 	car_description text
 
-)
+);
 
 
 CREATE TABLE images_tbl(
@@ -49,6 +49,13 @@ CREATE TABLE images_tbl(
 	image_path varchar (255),
 	car_id int,
 	FOREIGN KEY(car_id) REFERENCES car_tbl (id)	
+);
+
+CREATE TABLE user_tbl(
+    id int auto_increment NOT NULL primary key,
+    user_name varchar (72) NOT NULL,
+    user_password varchar (72) NOT NULL,
+    role varchar (72) NOT NULL,
 );
 
 

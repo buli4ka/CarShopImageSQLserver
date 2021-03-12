@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import unbreakable.shop.auto.entity.car_structure.BodyType;
-import unbreakable.shop.auto.service.BodyTypeService;
+import unbreakable.shop.auto.service.car_service.BodyTypeService;
 
 import java.util.List;
 

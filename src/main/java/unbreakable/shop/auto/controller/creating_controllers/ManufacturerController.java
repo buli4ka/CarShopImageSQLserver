@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import unbreakable.shop.auto.entity.car_structure.Manufacturer;
 
-import unbreakable.shop.auto.service.ManufacturerService;
+import unbreakable.shop.auto.service.car_service.ManufacturerService;
 
 import java.util.List;
 

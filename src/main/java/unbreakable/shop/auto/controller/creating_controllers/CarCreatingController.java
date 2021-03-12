@@ -5,22 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import unbreakable.shop.auto.entity.car_structure.Car;
 import unbreakable.shop.auto.entity.car_structure.Image;
 import unbreakable.shop.auto.entity.car_structure.Manufacturer;
-import unbreakable.shop.auto.service.*;
+import unbreakable.shop.auto.service.car_service.*;
 
 
-import javax.sql.rowset.serial.SerialBlob;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.sql.Blob;
-import java.sql.SQLException;
 import java.util.List;
 
 @Controller

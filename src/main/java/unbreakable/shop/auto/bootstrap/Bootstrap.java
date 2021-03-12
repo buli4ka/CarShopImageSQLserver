@@ -5,7 +5,7 @@
 //import org.springframework.stereotype.Component;
 //import unbreakable.shop.auto.entity.users.User;
 //
-//import unbreakable.shop.auto.repository.UserRepository;
+//import unbreakable.shop.auto.repository.user.UserRepository;
 //
 //@Component
 //public class Bootstrap implements CommandLineRunner {

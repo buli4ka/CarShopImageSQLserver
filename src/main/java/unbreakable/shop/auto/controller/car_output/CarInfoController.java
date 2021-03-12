@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import unbreakable.shop.auto.entity.car_structure.Car;
 import unbreakable.shop.auto.entity.car_structure.Image;
-import unbreakable.shop.auto.service.CarService;
-import unbreakable.shop.auto.service.ImageService;
+import unbreakable.shop.auto.service.car_service.CarService;
+import unbreakable.shop.auto.service.car_service.ImageService;
 
 import java.util.List;
 import java.util.Optional;

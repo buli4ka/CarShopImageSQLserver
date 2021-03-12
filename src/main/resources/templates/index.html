@@ -1,51 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Main Window</title>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<head th:insert="fragments/head.html :: head">
 </head>
 <body>
 
+<div th:insert="fragments/header.html :: navbar"></div>
 
-<div>
-    <h3>List of Cars</h3>
-    <table class="table table-hover table-dark">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Manufacturer</th>
-            <th>Car model</th>
-            <th>Body Type</th>
-            <th>Year of Issue</th>
-            <th>Car Description</th>
-            <th>Price</th>
-            <th>Image</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="car:${Cars}">
-            <td th:text="${car.id}"/>
-            <td th:text="${car.getManufacturer().getManufacturerName()}"/>
-            <td th:text="${car.getCarModel().getCarModelName()}"/>
-            <td th:text="${car.getBodyType().getBodyTypeName()}"/>
-            <td th:text="${car.yearOfIssue}"/>
-            <td th:text="${car.carDescription}"/>
-            <td th:text="${car.price}"/>
-            <td th:each="image:${Images}"
-                th:if="${car.id == image.getCar().id}">
-                <a th:href=" '/'+${car.id}"><img th:src="${image.imagePath}" height="150"/>
-                </a>
-            </td>
+<div class="container" th:each="car:${Cars}" style="background-color: slategray">
+    <div class="row">
+        <div class="col-5" th:each="image:${Images}" th:if="${car.id == image.getCar().id}" style="margin: 10px">
+            <a th:href=" '/'+${car.id}"><img th:src="${image.imagePath}" width="100%" /></a>
+        </div>
+        <div class="col-2"
+             th:text="${car.getManufacturer().getManufacturerName() + '  ' + car.getCarModel().getCarModelName()}">
+        </div>
+        <div class="col-2"
+             th:text="${car.price}">
+        </div>
+    </div>
+    <div class="row">
 
 
-        </tr>
+    </div>
 
-        </tbody>
-    </table>
 </div>
-
 
 </body>
 </html>
