@@ -55,7 +55,7 @@ CREATE TABLE user_tbl(
     id int auto_increment NOT NULL primary key,
     user_name varchar (72) NOT NULL,
     user_password varchar (72) NOT NULL,
-    role varchar (72) NOT NULL,
+    role varchar (72) NOT NULL
 );
 
 

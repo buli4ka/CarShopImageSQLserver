@@ -32,23 +32,20 @@ public class ImageService {
     }
 
     private String fileRecordPath(byte[] fileBytes, String fileName){
-
-        ClassLoader classLoader = getClass().getClassLoader();
-        String path = classLoader.getResource("./static/").getFile();
+        String path = "/resources/images/";
         System.out.println(path);
-        path = path.substring(1);
-        System.out.println(path);
-
         try {
-            path+=fileName;
-            File conFile = new File(path);
+            path += fileName;
+            this.path += path;
+            File conFile = new File(this.path);
             if(conFile.createNewFile()){
             FileOutputStream fos = new FileOutputStream(conFile);
             fos.write(fileBytes);
             fos.close();}
         }
         catch (Exception e){e.printStackTrace();}
-        path = "static/" + fileName;
+
+
 
         return path;
     }
